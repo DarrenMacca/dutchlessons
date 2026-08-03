@@ -1,0 +1,82 @@
+// ===============================
+// CEFR A1 WORD BANK (EXPANDED)
+// ===============================
+
+const A1_WORDS = [
+    // CONNECTORS
+    { english: "and", dutch: "en", audio: "en.mp3", category: "connector" },
+    { english: "or", dutch: "of", audio: "of.mp3", category: "connector" },
+    { english: "but", dutch: "maar", audio: "maar.mp3", category: "connector" },
+    { english: "because", dutch: "omdat", audio: "omdat.mp3", category: "connector" },
+    { english: "with", dutch: "met", audio: "met.mp3", category: "connector" },
+    { english: "without", dutch: "zonder", audio: "zonder.mp3", category: "connector" },
+    { english: "about", dutch: "over", audio: "over.mp3", category: "connector" },
+    { english: "for", dutch: "voor", audio: "voor.mp3", category: "connector" },
+    { english: "of", dutch: "van", audio: "van.mp3", category: "connector" },
+    { english: "to", dutch: "naar", audio: "naar.mp3", category: "connector" },
+
+    // CORE SURVIVAL
+    { english: "Hello", dutch: "Hallo", audio: "hallo.mp3", category: "core" },
+    { english: "Goodbye", dutch: "Tot ziens", audio: "tot-ziens.mp3", category: "core" },
+    { english: "Please", dutch: "Alstublieft", audio: "alstublieft.mp3", category: "core" },
+    { english: "Thank you", dutch: "Dank je wel", audio: "dank-je-wel.mp3", category: "core" },
+    { english: "Yes", dutch: "Ja", audio: "ja.mp3", category: "core" },
+    { english: "No", dutch: "Nee", audio: "nee.mp3", category: "core" },
+    { english: "Sorry", dutch: "Het spijt me", audio: "het-spijt-me.mp3", category: "core" },
+    { english: "Help", dutch: "Help", audio: "help.mp3", category: "core" },
+
+    // DAILY LIFE (NEW A1)
+    { english: "morning", dutch: "ochtend", audio: "ochtend.mp3", category: "daily-life" },
+    { english: "afternoon", dutch: "middag", audio: "middag.mp3", category: "daily-life" },
+    { english: "evening", dutch: "avond", audio: "avond.mp3", category: "daily-life" },
+    { english: "today", dutch: "vandaag", audio: "vandaag.mp3", category: "daily-life" },
+    { english: "tomorrow", dutch: "morgen", audio: "morgen.mp3", category: "daily-life" },
+    { english: "yesterday", dutch: "gisteren", audio: "gisteren.mp3", category: "daily-life" },
+
+    // FAMILY (NEW A1)
+    { english: "mother", dutch: "moeder", audio: "moeder.mp3", category: "family" },
+    { english: "father", dutch: "vader", audio: "vader.mp3", category: "family" },
+    { english: "parents", dutch: "ouders", audio: "ouders.mp3", category: "family" },
+    { english: "child", dutch: "kind", audio: "kind.mp3", category: "family" },
+    { english: "children", dutch: "kinderen", audio: "kinderen.mp3", category: "family" },
+
+    // FOOD & DRINK (YOUR ORIGINAL + NEW)
+    { english: "beer", dutch: "bier", audio: "bier.mp3", category: "food-drink" },
+    { english: "steak", dutch: "biefstuk", audio: "biefstuk.mp3", category: "food-drink" },
+    { english: "potato chips", dutch: "chips", audio: "chips.mp3", category: "food-drink" },
+    { english: "apple", dutch: "appel", audio: "appel.mp3", category: "food-drink" },
+    { english: "orange", dutch: "sinaasappel", audio: "sinaasappel.mp3", category: "food-drink" },
+    { english: "banana", dutch: "banaan", audio: "banaan.mp3", category: "food-drink" },
+    { english: "chicken", dutch: "kip", audio: "kip.mp3", category: "food-drink" },
+    { english: "fish", dutch: "vis", audio: "vis.mp3", category: "food-drink" },
+    { english: "rice", dutch: "rijst", audio: "rijst.mp3", category: "food-drink" },
+    { english: "soup", dutch: "soep", audio: "soep.mp3", category: "food-drink" },
+    { english: "salad", dutch: "salade", audio: "salade.mp3", category: "food-drink" },
+    { english: "cheese", dutch: "kaas", audio: "kaas.mp3", category: "food-drink" },
+    { english: "egg", dutch: "ei", audio: "ei.mp3", category: "food-drink" },
+    { english: "water", dutch: "water", audio: "water.mp3", category: "food-drink" },
+    { english: "coffee", dutch: "koffie", audio: "koffie.mp3", category: "food-drink" },
+    { english: "tea", dutch: "thee", audio: "thee.mp3", category: "food-drink" },
+    { english: "bread", dutch: "brood", audio: "brood.mp3", category: "food-drink" },
+    { english: "milk", dutch: "melk", audio: "melk.mp3", category: "food-drink" },
+
+    // BASIC VERBS (NEW A1)
+    { english: "to go", dutch: "gaan", audio: "gaan.mp3", category: "verb" },
+    { english: "to come", dutch: "komen", audio: "komen.mp3", category: "verb" },
+    { english: "to live", dutch: "wonen", audio: "wonen.mp3", category: "verb" },
+    { english: "to eat", dutch: "eten", audio: "eten.mp3", category: "verb" },
+    { english: "to drink", dutch: "drinken", audio: "drinken.mp3", category: "verb" },
+    { english: "to see", dutch: "zien", audio: "zien.mp3", category: "verb" },
+    { english: "to know", dutch: "weten", audio: "weten.mp3", category: "verb" },
+
+    // ADJECTIVES (NEW A1)
+    { english: "big", dutch: "groot", audio: "groot.mp3", category: "adjective" },
+    { english: "small", dutch: "klein", audio: "klein.mp3", category: "adjective" },
+    { english: "good", dutch: "goed", audio: "goed.mp3", category: "adjective" },
+    { english: "bad", dutch: "slecht", audio: "slecht.mp3", category: "adjective" },
+
+    // NUMBERS (NEW A1)
+    { english: "one", dutch: "één", audio: "een.mp3", category: "number" },
+    { english: "two", dutch: "twee", audio: "twee.mp3", category: "number" },
+    { english: "three", dutch: "drie", audio: "drie.mp3", category: "number" }
+];

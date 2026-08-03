@@ -1,0 +1,77 @@
+// ===============================
+// CEFR A2 WORD BANK (EXPANDED)
+// ===============================
+
+const A2_WORDS = [
+    // CONNECTORS (A2)
+    { english: "and", dutch: "en", audio: "en.mp3", category: "connector" },
+    { english: "or", dutch: "of", audio: "of.mp3", category: "connector" },
+    { english: "but", dutch: "maar", audio: "maar.mp3", category: "connector" },
+    { english: "because", dutch: "omdat", audio: "omdat.mp3", category: "connector" },
+    { english: "then", dutch: "dan", audio: "dan.mp3", category: "connector" },
+    { english: "later", dutch: "later", audio: "later.mp3", category: "connector" },
+    { english: "after", dutch: "na", audio: "na.mp3", category: "connector" },
+    { english: "before", dutch: "voor", audio: "voor.mp3", category: "connector" },
+
+    // CORE A2 FUNCTIONAL LANGUAGE
+    { english: "I want", dutch: "Ik wil", audio: "ik-wil.mp3", category: "core" },
+    { english: "I need", dutch: "Ik heb nodig", audio: "ik-heb-nodig.mp3", category: "core" },
+    { english: "I like", dutch: "Ik vind ... leuk", audio: "ik-vind-leuk.mp3", category: "core" },
+    { english: "I don’t understand", dutch: "Ik begrijp het niet", audio: "ik-begrijp-het-niet.mp3", category: "core" },
+    { english: "Where is…?", dutch: "Waar is...?", audio: "waar-is.mp3", category: "core" },
+    { english: "How much?", dutch: "Hoeveel kost het?", audio: "hoeveel-kost-het.mp3", category: "core" },
+    { english: "Help", dutch: "Help", audio: "help.mp3", category: "core" },
+    { english: "I am tired", dutch: "Ik ben moe", audio: "ik-ben-moe.mp3", category: "core" },
+
+    // DAILY LIFE (NEW A2)
+    { english: "always", dutch: "altijd", audio: "altijd.mp3", category: "daily-life" },
+    { english: "sometimes", dutch: "soms", audio: "soms.mp3", category: "daily-life" },
+    { english: "never", dutch: "nooit", audio: "nooit.mp3", category: "daily-life" },
+    { english: "early", dutch: "vroeg", audio: "vroeg.mp3", category: "daily-life" },
+    { english: "late", dutch: "laat", audio: "laat.mp3", category: "daily-life" },
+
+    // TRAVEL (NEW A2)
+    { english: "bus", dutch: "bus", audio: "bus.mp3", category: "travel" },
+    { english: "train", dutch: "trein", audio: "trein.mp3", category: "travel" },
+    { english: "taxi", dutch: "taxi", audio: "taxi.mp3", category: "travel" },
+    { english: "ticket", dutch: "kaartje", audio: "kaartje.mp3", category: "travel" },
+    { english: "map", dutch: "plattegrond", audio: "plattegrond.mp3", category: "travel" },
+    { english: "left", dutch: "links", audio: "links.mp3", category: "travel" },
+    { english: "right", dutch: "rechts", audio: "rechts.mp3", category: "travel" },
+    { english: "straight", dutch: "rechtdoor", audio: "rechtdoor.mp3", category: "travel" },
+
+    // FAMILY (NEW A2)
+    { english: "brother", dutch: "broer", audio: "broer.mp3", category: "family" },
+    { english: "sister", dutch: "zus", audio: "zus.mp3", category: "family" },
+    { english: "family", dutch: "familie", audio: "familie.mp3", category: "family" },
+
+    // FOOD & DRINK (EXPANDED FOR SENTENCE TAB)
+    { english: "menu", dutch: "menu", audio: "menu.mp3", category: "food-drink" },
+    { english: "breakfast", dutch: "ontbijt", audio: "ontbijt.mp3", category: "food-drink" },
+    { english: "lunch", dutch: "lunch", audio: "lunch.mp3", category: "food-drink" },
+    { english: "dinner", dutch: "avondeten", audio: "avondeten.mp3", category: "food-drink" },
+    { english: "vegetarian", dutch: "vegetarisch", audio: "vegetarisch.mp3", category: "food-drink" },
+    { english: "allergy", dutch: "allergie", audio: "allergie.mp3", category: "food-drink" },
+    { english: "bill", dutch: "rekening", audio: "rekening.mp3", category: "food-drink" },
+    { english: "card payment", dutch: "pinnen", audio: "pinnen.mp3", category: "food-drink" },
+
+    // BASIC VERBS (NEW A2)
+    { english: "to buy", dutch: "kopen", audio: "kopen.mp3", category: "verb" },
+    { english: "to pay", dutch: "betalen", audio: "betalen.mp3", category: "verb" },
+    { english: "to walk", dutch: "lopen", audio: "lopen.mp3", category: "verb" },
+    { english: "to talk", dutch: "praten", audio: "praten.mp3", category: "verb" },
+    { english: "to read", dutch: "lezen", audio: "lezen.mp3", category: "verb" },
+    { english: "to write", dutch: "schrijven", audio: "schrijven.mp3", category: "verb" },
+
+    // ADJECTIVES (NEW A2)
+    { english: "easy", dutch: "makkelijk", audio: "makkelijk.mp3", category: "adjective" },
+    { english: "difficult", dutch: "moeilijk", audio: "moeilijk.mp3", category: "adjective" },
+    { english: "expensive", dutch: "duur", audio: "duur.mp3", category: "adjective" },
+    { english: "cheap", dutch: "goedkoop", audio: "goedkoop.mp3", category: "adjective" },
+
+    // NUMBERS & QUANTITIES (NEW A2)
+    { english: "many", dutch: "veel", audio: "veel.mp3", category: "number" },
+    { english: "few", dutch: "weinig", audio: "weinig.mp3", category: "number" },
+    { english: "more", dutch: "meer", audio: "meer.mp3", category: "number" },
+    { english: "less", dutch: "minder", audio: "minder.mp3", category: "number" }
+];
