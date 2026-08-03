@@ -760,7 +760,9 @@ B2: [
     { dutch: "zelfs", english: "even", category: "Connectors" },
     { dutch: "weer", english: "again", category: "Connectors" },
     { dutch: "zorgvuldig", english: "carefully", category: "Connectors" }
-],
+]
+};
+
 
 /* ============================================================
    LISTEN VOCAB — A1 → B2 (Category → Word List)
