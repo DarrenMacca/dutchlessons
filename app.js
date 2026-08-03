@@ -4496,21 +4496,27 @@ function globalLookup(word) {
 }
 
 function globalLookupDutch(dutchText) {
-    const s = cleanStringForKeyboard(dutchText.toLowerCase().trim());
+    if (!dutchText) return "[Unknown translation]";
+
+    // Always convert safely to string
+    const s = cleanStringForKeyboard(String(dutchText).toLowerCase().trim());
+
     const banks = [];
 
-    if (CEFR_LEVELS?.A1) banks.push(...CEFR_LEVELS.A1);
-    if (CEFR_LEVELS?.A2) banks.push(...CEFR_LEVELS.A2);
-    if (CEFR_LEVELS?.B1) banks.push(...CEFR_LEVELS.B1);
-    if (CEFR_LEVELS?.B2) banks.push(...CEFR_LEVELS.B2);
+    // Collect CEFR lesson banks safely
+    ["A1", "A2", "B1", "B2"].forEach(level => {
+        if (Array.isArray(CEFR_LEVELS?.[level])) {
+            banks.push(...CEFR_LEVELS[level]);
+        }
+    });
 
     if (Array.isArray(CEFR_PHRASES)) banks.push(...CEFR_PHRASES);
     if (Array.isArray(LISTEN_VOCAB)) banks.push(...LISTEN_VOCAB);
 
-    if (Array.isArray(CEFR_CONVERSATION_AUDIO_A1)) banks.push(...CEFR_CONVERSATION_AUDIO_A1);
-    if (Array.isArray(CEFR_CONVERSATION_AUDIO_A2)) banks.push(...CEFR_CONVERSATION_AUDIO_A2);
-    if (Array.isArray(CEFR_CONVERSATION_AUDIO_B1)) banks.push(...CEFR_CONVERSATION_AUDIO_B1);
-    if (Array.isArray(CEFR_CONVERSATION_AUDIO_B2)) banks.push(...CEFR_CONVERSATION_AUDIO_B2);
+    // Conversation audio banks
+    [CEFR_CONVERSATION_AUDIO_A1, CEFR_CONVERSATION_AUDIO_A2,
+     CEFR_CONVERSATION_AUDIO_B1, CEFR_CONVERSATION_AUDIO_B2]
+        .forEach(arr => Array.isArray(arr) && banks.push(...arr));
 
     // Expected responses
     Object.values(CEFR_CONVERSATION_PROMPTS || {}).forEach(levelArray => {
@@ -4523,54 +4529,60 @@ function globalLookupDutch(dutchText) {
         }
     });
 
-    // Inject disruptors
-    const levelsList = ["A1", "A2", "B1", "B2"];
-    levelsList.forEach(level => {
-        const levelDisruptors = getDisruptorResponses(level);
-        if (Array.isArray(levelDisruptors)) {
-            banks.push(...levelDisruptors);
-        }
+    // Disruptors
+    ["A1", "A2", "B1", "B2"].forEach(level => {
+        const disruptors = getDisruptorResponses(level);
+        if (Array.isArray(disruptors)) banks.push(...disruptors);
     });
 
+    // Safe lookup
     for (const item of banks) {
         if (!item) continue;
-        const dutchString = typeof item === 'object' ? item.nl || item.dutch : item;
+
+        // Extract Dutch text safely
+        const dutchString = extractDutchText(item);
         if (!dutchString) continue;
 
-        if (cleanStringForKeyboard(dutchString.toLowerCase()) === s) {
+        const cleanedDutch = cleanStringForKeyboard(String(dutchString).toLowerCase());
+
+        if (cleanedDutch === s) {
             return item.en || item.english || "[Unknown translation]";
         }
     }
+
     return "[Unknown translation]";
 }
 
 
-/**
- * Universal Text Extractor Helper
- * Safely removes multi-nested tracking array patterns to clear all pill errors.
- */
 function extractDutchText(item) {
     if (!item) return "";
-    if (typeof item === 'string') return item;
-    if (typeof item === 'object') {
-        if (item.nl && typeof item.nl === 'object') return extractDutchText(item.nl);
-        if (item.dutch && typeof item.dutch === 'object') return extractDutchText(item.dutch);
-        
-        if (item.nl) return item.nl;
-        if (item.dutch) return item.dutch;
-        if (item.text) return item.text;
-        
-        const properties = Object.values(item);
-        for (const value of properties) {
-            if (typeof value === 'string' && !value.includes('[object')) return value;
-            if (typeof value === 'object' && value !== null) {
-                const nestedString = extractDutchText(value);
-                if (nestedString) return nestedString;
-            }
+
+    if (typeof item === "string") return item;
+
+    if (Array.isArray(item)) {
+        for (const sub of item) {
+            const result = extractDutchText(sub);
+            if (result) return result;
+        }
+        return "";
+    }
+
+    if (typeof item === "object") {
+        if (item.nl) return extractDutchText(item.nl);
+        if (item.dutch) return extractDutchText(item.dutch);
+        if (item.text) return extractDutchText(item.text);
+
+        // Fallback: scan all object values
+        for (const value of Object.values(item)) {
+            const result = extractDutchText(value);
+            if (result) return result;
         }
     }
-    return String(item);
+
+    return "";
 }
+
+
 
 /* ============================================================
    CONVERSATION TAB — MAIN RENDER PIPELINE (PART 2A) — DUTCH VERSION
@@ -7965,20 +7977,29 @@ try {
 
 function findAudioForDutch(dutchText) {
     if (!dutchText) return null;
-    const clean = cleanStringForKeyboard(dutchText.toLowerCase());
+
+    const clean = cleanStringForKeyboard(String(dutchText).toLowerCase());
     const banks = [];
 
-    if (typeof CEFR_CONVERSATION_AUDIO_A1 !== "undefined" && Array.isArray(CEFR_CONVERSATION_AUDIO_A1)) banks.push(...CEFR_CONVERSATION_AUDIO_A1);
-    if (typeof CEFR_CONVERSATION_AUDIO_A2 !== "undefined" && Array.isArray(CEFR_CONVERSATION_AUDIO_A2)) banks.push(...CEFR_CONVERSATION_AUDIO_A2);
-    if (typeof CEFR_CONVERSATION_AUDIO_B1 !== "undefined" && Array.isArray(CEFR_CONVERSATION_AUDIO_B1)) banks.push(...CEFR_CONVERSATION_AUDIO_B1);
-    if (typeof CEFR_CONVERSATION_AUDIO_B2 !== "undefined" && Array.isArray(CEFR_CONVERSATION_AUDIO_B2)) banks.push(...CEFR_CONVERSATION_AUDIO_B2);
+    // Collect audio banks safely
+    [CEFR_CONVERSATION_AUDIO_A1, CEFR_CONVERSATION_AUDIO_A2,
+     CEFR_CONVERSATION_AUDIO_B1, CEFR_CONVERSATION_AUDIO_B2]
+        .forEach(arr => Array.isArray(arr) && banks.push(...arr));
 
     for (const item of banks) {
-        if (!item || !item.nl || !item.audio) continue;
-        if (cleanStringForKeyboard(item.nl.toLowerCase()) === clean) {
+        if (!item || !item.audio) continue;
+
+        // Extract Dutch text safely using your new extractor
+        const dutchString = extractDutchText(item.nl || item.dutch || item.text);
+        if (!dutchString) continue;
+
+        const cleanedDutch = cleanStringForKeyboard(String(dutchString).toLowerCase());
+
+        if (cleanedDutch === clean) {
             return item.audio;
         }
     }
+
     return null;
 }
 
