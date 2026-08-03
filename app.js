@@ -194,7 +194,7 @@ const MINING_REFERENCES = {
     ]
 };
 
-const CEFR_LEVELS = {
+const CEFR_SENTENCES = {
 A1: [
     // Simple Greetings & Formal Introductions
     { nl: "hallo hoe gaat het", en: "Hello, how are you?" },
