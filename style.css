@@ -58,7 +58,7 @@ body {
 ------------------------------------------------------------ */
 .dashboard-hero-img {
     width: 100%;
-    max-width: 337px;
+    max-width: 253px; /* reduced by 25% from 337px */
     height: auto;
     display: block;
     margin: 20px auto 0 auto;
@@ -69,7 +69,7 @@ body {
 /* Mobile adjustments */
 @media (max-width: 600px) {
     .dashboard-hero-img {
-        max-width: 100%;
+        max-width: 75%; /* ensures proportional scaling on small screens */
         margin-top: 12px;
         border-radius: 12px;
         filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.3));
@@ -77,11 +77,11 @@ body {
 }
 
 /* ------------------------------------------------------------
-   HERO IMAGE
+   HERO IMAGE (Desktop)
 ------------------------------------------------------------ */
 .dashboard-hero-img {
     width: 100%;
-    max-width: 675px;
+    max-width: 506px; /* reduced by 25% from 675px */
     display: block;
     margin: 20px auto 0 auto;
     border-radius: 18px;
