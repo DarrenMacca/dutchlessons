@@ -1,3 +1,118 @@
+/* ============================================================
+   CEFR PERCENTAGE‑VOORTGANGSENGINE (85% SLAAGCRITERIUM)
+   ============================================================ */
+
+// 1. Initiële staat‑trackers (slaat voltooide item‑ID’s op om dubbele scoring te voorkomen)
+let cefrUserProgressMatrix = {
+    currentScore: parseInt(localStorage.getItem("cefr_user_score")) || 0,
+    correctStreak: parseInt(localStorage.getItem("cefr_user_streak")) || 0,
+    
+    // Arrays met unieke ID’s van vragen die correct zijn beantwoord
+    masteredItems: JSON.parse(localStorage.getItem("cefr_mastered_fingerprints")) || {
+        A1: [],
+        A2: [],
+        B1: [],
+        B2: []
+    }
+};
+
+// 🎯 DOELCRITERIUM: Een niveau vereist een voltooiingspercentage van 85% om het volgende blok te ontgrendelen
+const PASSING_PERCENTAGE_CRITERIA = 85;
+
+/**
+ * Dynamische percentage‑calculator: Berekent de actieve voltooiingspercentages per niveau
+ */
+function calculateLevelPercentage(levelKey) {
+    // 🔍 Onder de motorkap telt dit alle beschikbare items in de hoofdgegevensstructuren
+    let totalAvailableQueries = 0;
+    
+    if (typeof CEFR_LEVELS !== "undefined" && CEFR_LEVELS[levelKey]) {
+        totalAvailableQueries += CEFR_LEVELS[levelKey].length; // Woordenschat‑items
+    }
+    if (typeof CEFR_SENTENCES !== "undefined" && CEFR_SENTENCES[levelKey]) {
+        totalAvailableQueries += CEFR_SENTENCES[levelKey].length; // Contextzinnen
+    }
+    if (typeof CEFR_CONVERSATION_PROMPTS !== "undefined" && CEFR_CONVERSATION_PROMPTS[levelKey]) {
+        totalAvailableQueries += CEFR_CONVERSATION_PROMPTS[levelKey].length; // Gespreksvragen
+    }
+
+    // Fallback‑beveiliging tegen deling‑door‑nul
+    if (totalAvailableQueries === 0) return 100;
+
+    const correctUniqueCount = cefrUserProgressMatrix.masteredItems[levelKey].length;
+    const currentPercent = Math.min(100, Math.round((correctUniqueCount / totalAvailableQueries) * 100));
+    
+    return currentPercent;
+}
+
+/**
+ * Toegangscontrole‑engine: Bepaalt of een niveau voor de gebruiker is vrijgegeven
+ */
+function isLevelUnlocked(levelKey) {
+    if (levelKey === "A1") return true; // A1 is standaard open
+    if (levelKey === "A2") return calculateLevelPercentage("A1") >= PASSING_PERCENTAGE_CRITERIA;
+    if (levelKey === "B1") return isLevelUnlocked("A2") && calculateLevelPercentage("A2") >= PASSING_PERCENTAGE_CRITERIA;
+    if (levelKey === "B2") return isLevelUnlocked("B1") && calculateLevelPercentage("B1") >= PASSING_PERCENTAGE_CRITERIA;
+    return true;
+}
+
+/**
+ * Activiteit‑evaluatie: Logt succesvolle module‑taken en kent cosmetische scorepunten toe
+ */
+function registerSuccessfulModuleTask(levelKey, itemId, sourceModule) {
+    // 🛡️ VEILIGHEIDSFILTER: Scoring alleen toestaan binnen geautoriseerde activiteitstabs
+    const approvedTabs = ["Quiz", "Build", "Sentence", "Conversation"];
+    if (!approvedTabs.includes(sourceModule)) return;
+
+    // Maak een unieke samengestelde tracking‑ID
+    const itemFingerprint = `${sourceModule}_${itemId}`;
+
+    // Als deze vraag nog niet eerder correct is beantwoord, opslaan!
+    if (!cefrUserProgressMatrix.masteredItems[levelKey].includes(itemFingerprint)) {
+        cefrUserProgressMatrix.masteredItems[levelKey].push(itemFingerprint);
+        cefrUserProgressMatrix.currentScore += 10; // Cosmetische scorepunten
+        cefrUserProgressMatrix.correctStreak += 1;
+        
+        // Sla wijzigingen permanent op in lokale opslag
+        localStorage.setItem("cefr_user_score", cefrUserProgressMatrix.currentScore);
+        localStorage.setItem("cefr_user_streak", cefrUserProgressMatrix.correctStreak);
+        localStorage.setItem("cefr_mastered_fingerprints", JSON.stringify(cefrUserProgressMatrix.masteredItems));
+        
+        // Live UI‑checks voor mijlpalen
+        evaluateMilestoneThresholds(levelKey);
+    } else {
+        cefrUserProgressMatrix.correctStreak += 1;
+        localStorage.setItem("cefr_user_streak", cefrUserProgressMatrix.correctStreak);
+    }
+
+    renderScoreDashboardUI();
+}
+
+/**
+ * Mijlpaal‑monitor: Houdt percentages bij en toont promotie‑meldingen
+ */
+function evaluateMilestoneThresholds(currentLevel) {
+    const currentPercent = calculateLevelPercentage(currentLevel);
+    console.log(`📊 Voortgangsmatrix: Niveau ${currentLevel} staat momenteel op ${currentPercent}% voltooid.`);
+
+    // Controleren of het huidige niveau zojuist de 85% heeft gehaald
+    if (currentPercent >= PASSING_PERCENTAGE_CRITERIA) {
+        let nextLvlMap = { "A1": "A2", "A2": "B1", "B1": "B2" };
+        let nextLevelName = nextLvlMap[currentLevel];
+        
+        if (nextLevelName) {
+            // Controleren of deze melding al eerder is getoond
+            const alreadyNotified = localStorage.getItem(`notified_pass_${currentLevel}`) === "true";
+            if (!alreadyNotified) {
+                localStorage.setItem(`notified_pass_${currentLevel}`, "true");
+                triggerLevelPassModal(currentLevel, nextLevelName);
+            }
+        }
+    }
+
+    enforceMobileNavigationLocks();
+}
+
 { english: "I would like water, please.", dutch: "ik wil graag water, alstublieft" },
 { english: "I would like beer, please.", dutch: "ik wil graag bier, alstublieft" },
 { english: "Where is the bathroom?", dutch: "waar is de badkamer" },
