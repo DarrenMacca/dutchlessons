@@ -1320,53 +1320,54 @@ autoExpandDictionary();
 /* ============================================================
    MULTI-WORD PHRASES (CEFR-aligned)
    ============================================================ */
-const CEFR_PHRASES = {
+const CEFR_PHRASES = [
     // A1
-    "hoe gaat het": "how are you",
-    "waar woon je": "where do you live",
-    "hoe laat is het": "what time is it",
-    "vind je koffie lekker": "you like coffee",
-    "ik vind muziek leuk": "I like music",
-    "ik woon in de stad": "I live in the city",
-    "ik werk in een hotel": "I work in a hotel",
-    "ik wil eten": "I want to eat",
-    "ik wil drinken": "I want to drink",
-    "waar is de badkamer": "where is the bathroom",
-    "zij rent snel": "she runs fast",
-    "zij is snel": "she is fast",
-    "zij gaat snel": "she goes fast",
+    { nl: "hoe gaat het", en: "how are you" },
+    { nl: "waar woon je", en: "where do you live" },
+    { nl: "hoe laat is het", en: "what time is it" },
+    { nl: "vind je koffie lekker", en: "you like coffee" },
+    { nl: "ik vind muziek leuk", en: "I like music" },
+    { nl: "ik woon in de stad", en: "I live in the city" },
+    { nl: "ik werk in een hotel", en: "I work in a hotel" },
+    { nl: "ik wil eten", en: "I want to eat" },
+    { nl: "ik wil drinken", en: "I want to drink" },
+    { nl: "waar is de badkamer", en: "where is the bathroom" },
+    { nl: "zij rent snel", en: "she runs fast" },
+    { nl: "zij is snel", en: "she is fast" },
+    { nl: "zij gaat snel", en: "she goes fast" },
 
     // A2
-    "wat deed je gisteren": "what did you do yesterday",
-    "ben je naar de supermarkt gegaan": "did you go to the supermarket",
-    "reis je vaak": "you travel often",
-    "wat heb je gekocht": "what did you buy",
-    "wat ben je aan het doen": "what are you doing",
-    "eet je meestal vroeg": "you usually eat early",
-    "ik heb hulp nodig": "I need help",
-    "ik wil een reservering maken": "I want to make a reservation",
-    "waar is het station": "where is the station",
+    { nl: "wat deed je gisteren", en: "what did you do yesterday" },
+    { nl: "ben je naar de supermarkt gegaan", en: "did you go to the supermarket" },
+    { nl: "reis je vaak", en: "you travel often" },
+    { nl: "wat heb je gekocht", en: "what did you buy" },
+    { nl: "wat ben je aan het doen", en: "what are you doing" },
+    { nl: "eet je meestal vroeg", en: "you usually eat early" },
+    { nl: "ik heb hulp nodig", en: "I need help" },
+    { nl: "ik wil een reservering maken", en: "I want to make a reservation" },
+    { nl: "waar is het station", en: "where is the station" },
 
     // B1
-    "ik leer al nederlands": "I have been learning Dutch",
-    "ik geniet van reizen": "I enjoy traveling",
-    "ik wil mijn vaardigheden verbeteren": "I want to improve my skills",
-    "wat vind je van de stad": "what do you think of the city",
-    "hoe houd je een gezonde levensstijl": "how do you maintain a healthy life",
-    "wat heb je onlangs geleerd": "what did you learn recently",
-    "wat zijn je doelen": "what are your goals",
-    "welke ervaringen heb je": "what past experiences do you have",
+    { nl: "ik leer al nederlands", en: "I have been learning Dutch" },
+    { nl: "ik geniet van reizen", en: "I enjoy traveling" },
+    { nl: "ik wil mijn vaardigheden verbeteren", en: "I want to improve my skills" },
+    { nl: "wat vind je van de stad", en: "what do you think of the city" },
+    { nl: "hoe houd je een gezonde levensstijl", en: "how do you maintain a healthy life" },
+    { nl: "wat heb je onlangs geleerd", en: "what did you learn recently" },
+    { nl: "wat zijn je doelen", en: "what are your goals" },
+    { nl: "welke ervaringen heb je", en: "what past experiences do you have" },
 
     // B2
-    "hoe ga je om met stressvolle situaties": "how do you handle stressful situations",
-    "wat is jouw mening over technologie": "what is your opinion on technology",
-    "hoe is jouw leven veranderd": "how has your life changed",
-    "welke uitdagingen heb je": "what challenges do you face",
-    "wat hoop je te bereiken": "what do you hope to achieve",
-    "wat denk je over de toekomst": "what do you think about the future",
-    "hoe zie je de huidige samenleving": "how do you see modern society",
-    "wat is jouw perspectief": "what is your perspective"
-};
+    { nl: "hoe ga je om met stressvolle situaties", en: "how do you handle stressful situations" },
+    { nl: "wat is jouw mening over technologie", en: "what is your opinion on technology" },
+    { nl: "hoe is jouw leven veranderd", en: "how has your life changed" },
+    { nl: "welke uitdagingen heb je", en: "what challenges do you face" },
+    { nl: "wat hoop je te bereiken", en: "what do you hope to achieve" },
+    { nl: "wat denk je over de toekomst", en: "what do you think about the future" },
+    { nl: "hoe zie je de huidige samenleving", en: "how do you see modern society" },
+    { nl: "wat is jouw perspectief", en: "what is your perspective" }
+];
+
 
 /* ============================================================
    TRANSLATION ENGINE — CEFR Phrases + Word Dictionary
