@@ -2801,6 +2801,15 @@ const CEFR_SENTENCE_CHOICES = {
 
     A1: [
     {
+    english: "Hello Evelyn, I love you.",
+    correct: { nl: "hallo evelyn, ik vind je lief", en: "Hello Evelyn, I love you." },
+    options: [
+        { nl: "hallo evelyn, ik vind je lief", en: "Hello Evelyn, I love you." },
+        { nl: "hallo evelyn, ik mis je", en: "Hello Evelyn, I miss you." },
+        { nl: "hallo evelyn, hoe gaat het", en: "Hello Evelyn, how are you." }
+    ]
+},
+{
         english: "I’m a bit tired today.",
         correct: { nl: "ik ben een beetje moe vandaag", en: "I’m a bit tired today." },
         options: [
