@@ -6588,8 +6588,7 @@ A2: [
         { nl: "nee de trein kwam twintig minuten te laat", en: "No, the train arrived twenty minutes late" },
         { nl: "ik wacht nog steeds op het station", en: "I am still waiting at the station" }
     ]
-}
-],
+},
 	{
     prompt_nl: "Heb je gewerkt in het nieuwe restaurant?",
     prompt_en: "Have you been working at the new restaurant?",
