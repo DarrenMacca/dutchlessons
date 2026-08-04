@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Spanish CEFR Trainer</title>
+    <title>Dutch CEFR Trainer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,8 +11,8 @@
 
 <!-- HEADER + HERO -->
 <div class="glass-header">
-    <h1>Macca's Spanish Trainer</h1>
-    <img src="images/dashboard-hero.png" 
+    <h1>Lynda's Dutch Trainer</h1>
+    <img src="Icons/dashboard-hero.png" 
          alt="Dashboard Hero" 
          class="dashboard-hero-img">
 </div>
@@ -20,35 +20,35 @@
 <!-- NAVIGATION -->
 <nav class="glass-panel nav-bar">
     <button class="tab-btn active" data-tab="dashboard">
-        <img src="images/dashboard.png" class="tab-icon"> Dashboard
+        <img src="Icons/dashboard.png" class="tab-icon"> Dashboard
     </button>
     <button class="tab-btn" data-tab="listen">
-        <img src="images/listen.png" class="tab-icon"> Listen
+        <img src="Icons/listen.png" class="tab-icon"> Listen
     </button>
     <button class="tab-btn" data-tab="flash">
-        <img src="images/flashcards.png" class="tab-icon"> Flashcards
+        <img src="Icons/flashcards.png" class="tab-icon"> Flashcards
     </button>
     <button class="tab-btn" data-tab="quiz">
-        <img src="images/badge-quiz.png" class="tab-icon"> Quiz
+        <img src="Icons/badge-quiz.png" class="tab-icon"> Quiz
     </button>
     <button class="tab-btn" data-tab="build">
-        <img src="images/badge-build.png" class="tab-icon"> Build
+        <img src="Icons/badge-build.png" class="tab-icon"> Build
     </button>
     <button class="tab-btn" data-tab="sentence">
-        <img src="images/icon-sentence.png" class="tab-icon"> Sentence
+        <img src="Icons/icon-sentence.png" class="tab-icon"> Sentence
     </button>
     <button class="tab-btn" data-tab="conversation">
-        <img src="images/badge-conversation.png" class="tab-icon"> Conversation
+        <img src="Icons/badge-conversation.png" class="tab-icon"> Conversation
     </button>
     <button class="tab-btn" data-tab="grammar">
-        <img src="images/grammar.png" class="tab-icon"> Grammar
+        <img src="Icons/grammar.png" class="tab-icon"> Grammar
     </button>
     <button class="tab-btn" data-tab="mining">
-        <img src="images/mining.png" class="tab-icon"> Mining Terminology
+        <img src="Icons/mining.png" class="tab-icon"> Mining Terminology
     </button>
     <!-- FIXED: Matches class and data attributes of other buttons -->
     <button class="tab-btn" data-tab="review">
-        <img src="images/icon-review.png" class="tab-icon"> Review
+        <img src="Icons/icon-review.png" class="tab-icon"> Review
     </button>
 </nav>
 
@@ -87,7 +87,7 @@
             🔍 Quick Dictionary Search
         </label>
         <p style="font-size: 12px; margin: -5px 0 5px 0; color: rgba(255,255,255,0.6);">
-            Type an English word to find its Spanish translation
+            Type an English word to find its Dutch translation
         </p>
         <input id="dict-search-input" class="input-field" type="text" placeholder="e.g., Hello, Dog, Apple...">
         <div id="dict-search-result" style="margin-top: 5px; min-height: 24px; font-size: 14px; text-align: center;"></div>
@@ -104,7 +104,7 @@
         <div id="practice-prompt-row" style="font-size: 16px; margin-bottom: 12px; font-weight: 500;">
             Translate: <span id="practice-english-word" style="color: #0ea5e9; font-weight: bold;">Loading...</span>
         </div>
-        <input id="practice-user-input" class="input-field" type="text" placeholder="Type the Spanish translation...">
+        <input id="practice-user-input" class="input-field" type="text" placeholder="Type the Dutch translation...">
         <div id="practice-feedback" style="margin-top: 10px; min-height: 24px; font-size: 14px; text-align: center;"></div>
         <div style="display: flex; gap: 10px; justify-content: center; margin-top: 12px;">
             <button id="practice-check-btn" class="pill" style="max-width: 100px;">Check</button>
@@ -120,7 +120,7 @@
         <!-- QUIZ -->
         <div id="quiz-tile" class="progress-tile glass-panel">
             <div class="progress-icon-row">
-                <img src="images/badge-quiz.png" class="progress-img">
+                <img src="Icons/badge-quiz.png" class="progress-img">
                 <label class="section-title">Quiz Progress</label>
                 <span class="progress-number" id="quiz-number">0%</span>
             </div>
@@ -132,7 +132,7 @@
         <!-- BUILD -->
         <div id="build-tile" class="progress-tile glass-panel">
             <div class="progress-icon-row">
-                <img src="images/badge-build.png" class="progress-img">
+                <img src="Icons/badge-build.png" class="progress-img">
                 <label class="section-title">Build Progress</label>
                 <span class="progress-number" id="build-number">0%</span>
             </div>
@@ -144,7 +144,7 @@
         <!-- SENTENCE -->
         <div id="sentence-tile" class="progress-tile glass-panel">
             <div class="progress-icon-row">
-                <img src="images/icon-sentence.png" class="progress-img">
+                <img src="Icons/icon-sentence.png" class="progress-img">
                 <label class="section-title">Sentence Progress</label>
                 <span class="progress-number" id="sentence-number">0%</span>
             </div>
@@ -156,7 +156,7 @@
         <!-- XP -->
         <div id="xp-tile" class="progress-tile glass-panel">
             <div class="progress-icon-row">
-                <img src="images/icon-xp.png" class="progress-img">
+                <img src="Icons/icon-xp.png" class="progress-img">
                 <label class="section-title">XP Progress</label>
                 <span class="progress-number" id="xp-number">0%</span>
             </div>
@@ -168,7 +168,7 @@
         <!-- STREAK -->
         <div id="streak-tile" class="progress-tile glass-panel">
             <div class="progress-icon-row">
-                <img src="images/icon-streak.png" class="progress-img">
+                <img src="Icons/icon-streak.png" class="progress-img">
                 <label class="section-title">Streak</label>
                 <span class="progress-number" id="streak-number">0%</span>
             </div>
@@ -180,7 +180,7 @@
         <!-- SCORE -->
         <div id="score-tile" class="progress-tile glass-panel">
             <div class="progress-icon-row">
-                <img src="images/icon-level.png" class="progress-img">
+                <img src="Icons/icon-level.png" class="progress-img">
                 <label class="section-title">Score Rating</label>
                 <span class="progress-number" id="score-number">0%</span>
             </div>
@@ -192,7 +192,7 @@
         <!-- REVIEW -->
         <div id="review-tile" class="progress-tile glass-panel">
             <div class="progress-icon-row">
-                <img src="images/icon-review.png" class="progress-img">
+                <img src="Icons/icon-review.png" class="progress-img">
                 <label class="section-title">Due for Review</label>
                 <span class="progress-number" id="review-number">0%</span>
             </div>
@@ -204,7 +204,7 @@
         <!-- RESET -->
         <div id="reset-tile" class="progress-tile glass-panel reset-tile">
             <div class="progress-icon-row">
-                <img src="images/icon-reset.png" class="progress-img">
+                <img src="Icons/icon-reset.png" class="progress-img">
                 <label class="section-title">Reset All Levels</label>
             </div>
             <button id="resetAllLevelsBtn" class="dash-reset-btn danger">Reset Everything</button>
