@@ -7175,7 +7175,7 @@ B2: [
         { nl: "de prestaties zijn deze maand verminderd", en: "The performance has been reduced this month" },
         { nl: "het is mogelijk beter vervoer te coördineren", en: "It is possible to coordinate better transport" }
     ]
-}
+},
 	{
     prompt_nl: "Hebben ze tijdens hun reis een afgelegen plek verkend?",
     prompt_en: "Have they explored a remote place during their trip?",
