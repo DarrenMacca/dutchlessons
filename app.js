@@ -8304,12 +8304,13 @@ function globalLookup(word) {
 
     const levelsList = ["A1", "A2", "B1", "B2"];
 
-    // 1. CEFR Vocabulary (A1–B2)
+    // 1. CEFR Vocabulary (A1–B2) — CEFR_LEVELS
     for (const level of levelsList) {
 
         if (typeof CEFR_LEVELS === "undefined" || !CEFR_LEVELS) continue;
 
         const vocab = CEFR_LEVELS[level];
+
         if (!vocab) continue;
 
         const match = vocab.find(item =>
@@ -8333,12 +8334,13 @@ function globalLookup(word) {
         }
     }
 
-    // 2. CEFR Sentences
+    // 2. CEFR Sentences — CEFR_SENTENCES
     for (const level of levelsList) {
 
         if (typeof CEFR_SENTENCES === "undefined" || !CEFR_SENTENCES) continue;
 
         const bank = CEFR_SENTENCES[level];
+
         if (!bank) continue;
 
         const match = bank.find(item =>
@@ -8362,7 +8364,7 @@ function globalLookup(word) {
         }
     }
 
-    // 3. CEFR Sentence Choices
+    // 3. CEFR Sentence Choices — CEFR_SENTENCE_CHOICES
     for (const level of levelsList) {
 
         if (
@@ -8371,6 +8373,7 @@ function globalLookup(word) {
         ) continue;
 
         const bank = CEFR_SENTENCE_CHOICES[level];
+
         if (!bank) continue;
 
         const match = bank.find(item =>
@@ -8405,26 +8408,25 @@ function globalLookup(word) {
         }
     }
 
-    // 4. CEFR Phrases
+    // 4. CEFR Phrases — CEFR_PHRASES (OBJECT MODEL)
     if (
         typeof CEFR_PHRASES !== "undefined" &&
         CEFR_PHRASES !== null &&
         !Array.isArray(CEFR_PHRASES)
     ) {
 
-        const matchingKey =
-            Object.keys(CEFR_PHRASES).find(dutchKey => {
+        const matchingKey = Object.keys(CEFR_PHRASES).find(dutchKey => {
 
-                const englishValue =
-                    CEFR_PHRASES[dutchKey];
+            const englishValue =
+                CEFR_PHRASES[dutchKey];
 
-                return (
-                    (englishValue &&
-                     normalizeEnglish(englishValue) === queryCleanEng)
-                    ||
-                    (normalizeDutch(dutchKey) === queryCleanNl)
-                );
-            });
+            return (
+                (englishValue &&
+                 normalizeEnglish(englishValue) === queryCleanEng)
+                ||
+                (normalizeDutch(dutchKey) === queryCleanNl)
+            );
+        });
 
         if (matchingKey) {
 
@@ -8445,14 +8447,19 @@ function globalLookup(word) {
                         ? "English"
                         : "Dutch",
 
-                speakText: matchingKey,
-                source: "CEFR Phrases",
-                level: "A1"
+                speakText:
+                    matchingKey,
+
+                source:
+                    "CEFR Phrases",
+
+                level:
+                    "A1"
             };
         }
     }
 
-    // 5. Listen Vocab
+    // 5. Listen Vocab — LISTEN_VOCAB
     if (
         typeof LISTEN_VOCAB !== "undefined" &&
         LISTEN_VOCAB !== null
@@ -8460,12 +8467,15 @@ function globalLookup(word) {
 
         for (const lvlKey of Object.keys(LISTEN_VOCAB)) {
 
-            const levelData = LISTEN_VOCAB[lvlKey];
+            const levelData =
+                LISTEN_VOCAB[lvlKey];
+
             if (!levelData) continue;
 
             for (const catKey of Object.keys(levelData)) {
 
-                const wordArray = levelData[catKey];
+                const wordArray =
+                    levelData[catKey];
 
                 if (!Array.isArray(wordArray)) continue;
 
@@ -8505,125 +8515,110 @@ function globalLookup(word) {
         }
     }
 
-    return null;
-}
-// 6. Word-by-word dictionary — WORD_DICT (KEY-VALUE DIRECTORY)
-if (typeof WORD_DICT !== "undefined") {
+    // 6. Word-by-word dictionary — WORD_DICT
+    if (typeof WORD_DICT !== "undefined") {
 
-    if (WORD_DICT[queryCleanEng]) {
-        return {
-            translation: WORD_DICT[queryCleanEng],
-            label: "Dutch",
-            speakText: WORD_DICT[queryCleanEng],
-            source: "Word Dictionary",
-            level: "GLOBAL"
-        };
-    }
-
-    const reverseKeyMatch =
-        Object.keys(WORD_DICT).find(
-            k =>
-                normalizeDutch(
-                    WORD_DICT[k]
-                ) === queryCleanNl
-        );
-
-    if (reverseKeyMatch) {
-
-        return {
-            translation: reverseKeyMatch,
-            label: "English",
-            speakText: WORD_DICT[reverseKeyMatch],
-            source: "Word Dictionary",
-            level: "GLOBAL"
-        };
-    }
-}
-
-
-// ⭐ 6.5 MINING TERMINOLOGY SEARCH SUPPORT
-if (
-    typeof MINING_REFERENCES !== "undefined" &&
-    MINING_REFERENCES !== null
-) {
-
-    for (const categoryKey of Object.keys(MINING_REFERENCES)) {
-
-        const miningCategory =
-            MINING_REFERENCES[categoryKey];
-
-        if (!Array.isArray(miningCategory)) {
-            continue;
-        }
-
-        const match =
-            miningCategory.find(item =>
-
-                (item.english &&
-                 normalizeEnglish(item.english) === queryCleanEng)
-
-                ||
-
-                (item.dutch &&
-                 normalizeDutch(item.dutch) === queryCleanNl)
-            );
-
-        if (match) {
-
-            const isDutchInput =
-                match.dutch &&
-                normalizeDutch(match.dutch) === queryCleanNl;
+        if (WORD_DICT[queryCleanEng]) {
 
             return {
+                translation: WORD_DICT[queryCleanEng],
+                label: "Dutch",
+                speakText: WORD_DICT[queryCleanEng],
+                source: "Word Dictionary",
+                level: "GLOBAL"
+            };
+        }
 
-                translation:
-                    isDutchInput
-                        ? match.english
-                        : match.dutch,
+        const reverseKeyMatch =
+            Object.keys(WORD_DICT).find(
+                k =>
+                    normalizeDutch(
+                        WORD_DICT[k]
+                    ) === queryCleanNl
+            );
 
-                label:
-                    isDutchInput
-                        ? "English"
-                        : "Dutch",
+        if (reverseKeyMatch) {
 
-                speakText:
-                    match.dutch,
-
-                source:
-                    `Mining Terminology (${categoryKey})`,
-
-                level:
-                    "GLOBAL"
+            return {
+                translation: reverseKeyMatch,
+                label: "English",
+                speakText: WORD_DICT[reverseKeyMatch],
+                source: "Word Dictionary",
+                level: "GLOBAL"
             };
         }
     }
-}
 
+    // ⭐ 6.5 MINING TERMINOLOGY SEARCH SUPPORT
+    if (
+        typeof MINING_REFERENCES !== "undefined" &&
+        MINING_REFERENCES !== null
+    ) {
 
-// 7. Conversation Prompts — CEFR_CONVERSATION_PROMPTS
-if (
-    typeof CEFR_CONVERSATION_PROMPTS !== "undefined" &&
-    CEFR_CONVERSATION_PROMPTS !== null
-) {
+        for (const categoryKey of Object.keys(MINING_REFERENCES)) {
 
-    for (const levelKey of Object.keys(CEFR_CONVERSATION_PROMPTS)) {
+            const miningCategory =
+                MINING_REFERENCES[categoryKey];
 
-        const prompts =
-            CEFR_CONVERSATION_PROMPTS[levelKey];
+            if (!Array.isArray(miningCategory)) continue;
 
-        if (!Array.isArray(prompts)) continue;
+            const match =
+                miningCategory.find(item =>
+                    (item.english &&
+                     normalizeEnglish(item.english) === queryCleanEng)
+                    ||
+                    (item.dutch &&
+                     normalizeDutch(item.dutch) === queryCleanNl)
+                );
 
-        const convoMatch =
-            prompts.find(p => {
+            if (match) {
+
+                const isDutchInput =
+                    match.dutch &&
+                    normalizeDutch(match.dutch) === queryCleanNl;
+
+                return {
+                    translation:
+                        isDutchInput
+                            ? match.english
+                            : match.dutch,
+
+                    label:
+                        isDutchInput
+                            ? "English"
+                            : "Dutch",
+
+                    speakText:
+                        match.dutch,
+
+                    source:
+                        `Mining Terminology (${categoryKey})`,
+
+                    level:
+                        "GLOBAL"
+                };
+            }
+        }
+    }
+    // 7. Conversation Prompts — CEFR_CONVERSATION_PROMPTS
+    if (
+        typeof CEFR_CONVERSATION_PROMPTS !== "undefined" &&
+        CEFR_CONVERSATION_PROMPTS !== null
+    ) {
+
+        for (const levelKey of Object.keys(CEFR_CONVERSATION_PROMPTS)) {
+
+            const prompts =
+                CEFR_CONVERSATION_PROMPTS[levelKey];
+
+            if (!Array.isArray(prompts)) continue;
+
+            const convoMatch = prompts.find(p => {
 
                 const dutchText =
                     typeof p.dutch === "object"
                         ? extractDutchText(p.dutch)
-                        : (
-                            p.dutch ||
-                            p.prompt_nl ||
-                            p.nl
-                        );
+                        : p.dutch;
 
                 return (
                     p.english &&
@@ -8634,26 +8629,80 @@ if (
                 );
             });
 
-        if (convoMatch) {
+            if (convoMatch) {
 
-            const targetDutchText =
-                typeof convoMatch.dutch === "object"
-                    ? extractDutchText(convoMatch.dutch)
-                    : (
-                        convoMatch.dutch ||
-                        convoMatch.prompt_nl ||
-                        convoMatch.nl
-                    );
+                const targetDutchText =
+                    typeof convoMatch.dutch === "object"
+                        ? extractDutchText(convoMatch.dutch)
+                        : convoMatch.dutch;
+
+                const isDutchInput =
+                    targetDutchText &&
+                    normalizeDutch(targetDutchText) === queryCleanNl;
+
+                return {
+                    translation:
+                        isDutchInput
+                            ? convoMatch.english
+                            : targetDutchText,
+
+                    label:
+                        isDutchInput
+                            ? "English"
+                            : "Dutch",
+
+                    speakText:
+                        targetDutchText,
+
+                    source:
+                        "Conversation Prompt",
+
+                    level:
+                        levelKey
+                };
+            }
+        }
+    }
+
+    // 8. Conversation Audio — A1–B2
+    const convoAudioBanks = [];
+
+    if (typeof CEFR_CONVERSATION_AUDIO_A1 !== "undefined")
+        convoAudioBanks.push(CEFR_CONVERSATION_AUDIO_A1);
+
+    if (typeof CEFR_CONVERSATION_AUDIO_A2 !== "undefined")
+        convoAudioBanks.push(CEFR_CONVERSATION_AUDIO_A2);
+
+    if (typeof CEFR_CONVERSATION_AUDIO_B1 !== "undefined")
+        convoAudioBanks.push(CEFR_CONVERSATION_AUDIO_B1);
+
+    if (typeof CEFR_CONVERSATION_AUDIO_B2 !== "undefined")
+        convoAudioBanks.push(CEFR_CONVERSATION_AUDIO_B2);
+
+    for (const bank of convoAudioBanks) {
+
+        if (!bank || !Array.isArray(bank)) continue;
+
+        const audioMatch = bank.find(a =>
+            (a.english &&
+             normalizeEnglish(a.english) === queryCleanEng)
+            ||
+            (a.nl &&
+             normalizeDutch(a.nl) === queryCleanNl)
+        );
+
+        if (audioMatch) {
 
             const isDutchInput =
-                targetDutchText &&
-                normalizeDutch(targetDutchText) === queryCleanNl;
+                audioMatch.nl &&
+                normalizeDutch(audioMatch.nl) === queryCleanNl;
 
             return {
+
                 translation:
                     isDutchInput
-                        ? convoMatch.english
-                        : targetDutchText,
+                        ? audioMatch.english
+                        : audioMatch.nl,
 
                 label:
                     isDutchInput
@@ -8661,84 +8710,138 @@ if (
                         : "Dutch",
 
                 speakText:
-                    targetDutchText,
+                    audioMatch.nl,
 
                 source:
-                    "Conversation Prompt",
+                    "Conversation Audio",
 
                 level:
-                    levelKey
+                    audioMatch.level || "GLOBAL"
             };
         }
     }
+
+    return null;
 }
 
+/* ============================================================
+   DYNAMIC EVERYDAY PHRASE TEMPLATE BLUEPRINTS (SUB-PARSER)
+   ============================================================ */
+const EVERYDAY_PHRASE_TEMPLATES = [
 
-// 8. Conversation Audio — A1–B2
-const convoAudioBanks = [];
+    {
+        // Matches: "I would like to order ..."
+        pattern: /^i would like to order (.+)$/i,
 
-if (typeof CEFR_CONVERSATION_AUDIO_A1 !== "undefined")
-    convoAudioBanks.push(CEFR_CONVERSATION_AUDIO_A1);
+        translate: (targetWord) => {
 
-if (typeof CEFR_CONVERSATION_AUDIO_A2 !== "undefined")
-    convoAudioBanks.push(CEFR_CONVERSATION_AUDIO_A2);
+            const parsedTarget =
+                parseSubPhrase(targetWord);
 
-if (typeof CEFR_CONVERSATION_AUDIO_B1 !== "undefined")
-    convoAudioBanks.push(CEFR_CONVERSATION_AUDIO_B1);
+            return {
+                translation: `Ik wil graag ${parsedTarget} bestellen`,
+                label: "Dutch",
+                speakText: `Ik wil graag ${parsedTarget} bestellen`,
+                source: "Dynamic Order Template"
+            };
+        }
+    },
 
-if (typeof CEFR_CONVERSATION_AUDIO_B2 !== "undefined")
-    convoAudioBanks.push(CEFR_CONVERSATION_AUDIO_B2);
+    {
+        // Matches: "I want to buy ..."
+        pattern: /^i want to buy (.+)$/i,
 
+        translate: (targetWord) => {
 
-for (const bank of convoAudioBanks) {
+            const parsedTarget =
+                parseSubPhrase(targetWord);
 
-    if (!bank || !Array.isArray(bank)) continue;
+            return {
+                translation: `Ik wil ${parsedTarget} kopen`,
+                label: "Dutch",
+                speakText: `Ik wil ${parsedTarget} kopen`,
+                source: "Dynamic Purchase Template"
+            };
+        }
+    },
 
-    const audioMatch =
-        bank.find(a =>
+    {
+        // Matches: "Can I buy ..."
+        pattern: /^can i buy (.+)$/i,
 
-            (a.english &&
-             normalizeEnglish(a.english) === queryCleanEng)
+        translate: (targetWord) => {
 
-            ||
+            const parsedTarget =
+                parseSubPhrase(targetWord);
 
-            (a.nl &&
-             normalizeDutch(a.nl) === queryCleanNl)
-        );
+            return {
+                translation: `Kan ik ${parsedTarget} kopen?`,
+                label: "Dutch",
+                speakText: `Kan ik ${parsedTarget} kopen`,
+                source: "Dynamic Transaction Template"
+            };
+        }
+    },
 
-    if (audioMatch) {
+    {
+        // Matches: "Can I order ..."
+        pattern: /^can i order (.+)$/i,
 
-        const isDutchInput =
-            audioMatch.nl &&
-            normalizeDutch(audioMatch.nl) === queryCleanNl;
+        translate: (targetWord) => {
 
-        return {
+            const parsedTarget =
+                parseSubPhrase(targetWord);
 
-            translation:
-                isDutchInput
-                    ? audioMatch.english
-                    : audioMatch.nl,
+            return {
+                translation: `Kan ik ${parsedTarget} bestellen?`,
+                label: "Dutch",
+                speakText: `Kan ik ${parsedTarget} bestellen`,
+                source: "Dynamic Transaction Template"
+            };
+        }
+    },
 
-            label:
-                isDutchInput
-                    ? "English"
-                    : "Dutch",
+    {
+        // Matches: "Where can I find ..."
+        pattern: /^where can i find (.+)$/i,
 
-            speakText:
-                audioMatch.nl,
+        translate: (targetWord) => {
 
-            source:
-                "Conversation Audio",
+            const parsedTarget =
+                parseSubPhrase(targetWord);
 
-            level:
-                audioMatch.level || "GLOBAL"
-        };
+            return {
+                translation: `Waar kan ik ${parsedTarget} vinden?`,
+                label: "Dutch",
+                speakText: `Waar kan ik ${parsedTarget} vinden`,
+                source: "Dynamic Location Template"
+            };
+        }
+    },
+
+    {
+        // Matches: "Is the ... far"
+        pattern: /^is the (.+) far$/i,
+
+        translate: (targetWord) => {
+
+            const parsedTarget =
+                parseSubPhrase(targetWord);
+
+            return {
+                translation: `Is ${parsedTarget} ver weg?`,
+                label: "Dutch",
+                speakText: `Is ${parsedTarget} ver weg`,
+                source: "Dynamic Distance Template"
+            };
+        }
     }
-}
+];
 
-return null;
+
 /**
- * Helper Sub-Parser Function
+ * Helper Sub-Parser Function:
+ * Breaks down compound inputs and translates them word by word.
  */
 function parseSubPhrase(phraseText) {
 
@@ -8756,7 +8859,8 @@ function parseSubPhrase(phraseText) {
 
     bits.forEach(bit => {
 
-        const look = globalLookup(bit);
+        const look =
+            globalLookup(bit);
 
         if (look) {
 
@@ -8782,13 +8886,14 @@ function parseSubPhrase(phraseText) {
 
         } else {
 
-            translatedBits.push(`[${bit}]`);
+            translatedBits.push(
+                `[${bit}]`
+            );
         }
     });
 
     return translatedBits.join(" ");
 }
-
 
 /* ============================================================
    DICTIONARY SEARCH INITIALIZER SYSTEM
