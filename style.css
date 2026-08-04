@@ -58,7 +58,7 @@ body {
 ------------------------------------------------------------ */
 .dashboard-hero-img {
     width: 100%;
-    max-width: 253px; /* reduced by 25% from 337px */
+    max-width: 337px;
     height: auto;
     display: block;
     margin: 20px auto 0 auto;
@@ -69,7 +69,7 @@ body {
 /* Mobile adjustments */
 @media (max-width: 600px) {
     .dashboard-hero-img {
-        max-width: 75%; /* ensures proportional scaling on small screens */
+        max-width: 100%;
         margin-top: 12px;
         border-radius: 12px;
         filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.3));
@@ -77,11 +77,11 @@ body {
 }
 
 /* ------------------------------------------------------------
-   HERO IMAGE (Desktop)
+   HERO IMAGE
 ------------------------------------------------------------ */
 .dashboard-hero-img {
     width: 100%;
-    max-width: 506px; /* reduced by 25% from 675px */
+    max-width: 675px;
     display: block;
     margin: 20px auto 0 auto;
     border-radius: 18px;
@@ -327,7 +327,7 @@ body {
     position: relative;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     box-shadow: 0 0 10px rgba(0,255,255,0.15);
-    animation: fadeInTile 0.4s ease-out;
+   animation: fadeInTile 0.4s ease-out;
 }
 
 /* ------------------------------------------------------------
@@ -406,9 +406,10 @@ body {
     0%   { transform: translateX(-40%); }
     100% { transform: translateX(140%); }
 }
-/* ============================================================
+
+/* ------------------------------------------------------------
    ICON + LABEL ROW
-   ============================================================ */
+------------------------------------------------------------ */
 .progress-icon-row {
     display: flex;
     align-items: center;
@@ -586,7 +587,7 @@ body {
 .progress-tile:hover .gradient-b2 { box-shadow: 0 0 14px rgba(239,68,68,0.9); }
 
 /* ------------------------------------------------------------
-   TAB BAR
+   TAB BAR (Default Desktop View — Centered & Clean)
 ------------------------------------------------------------ */
 .nav-bar {
     position: sticky;
@@ -646,6 +647,28 @@ body {
     display: none;
 }
 
+/* ------------------------------------------------------------
+   MOBILE ONLY OVERRIDE (≤600px) — Enables Swiping Without Hitting Desktop
+------------------------------------------------------------ */
+@media (max-width: 600px) {
+    .nav-bar {
+        justify-content: flex-start !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        width: 100% !important;
+        padding: 12px 16px !important;
+        scrollbar-width: none !important;
+    }
+
+    .nav-bar::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .tab-btn {
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+    }
+}
 /* ------------------------------------------------------------
    EXTENSION — Active Tab Neon Edge
 ------------------------------------------------------------ */
@@ -784,6 +807,7 @@ body {
         0 0 12px rgba(14,165,233,0.65),
         0 0 22px rgba(14,165,233,0.45);
 }
+
 /* ============================================================
    FLASHCARDS — NEW UNIFIED SYSTEM (A1–B2)
    ============================================================ */
@@ -937,11 +961,11 @@ body {
    ============================================================ */
 
 .sentence-english {
-    margin-bottom: 12px;    /* space between question and pills */
+    margin-bottom: 12px;   /* space between question and pills */
 }
 
 .sentence-options {
-    margin-top: 8px;        /* optional: small top spacing */
+    margin-top: 8px;       /* optional: small top spacing */
 }
 
 #sentence-next {
@@ -953,7 +977,7 @@ body {
    ============================================================ */
 
 .build-selected {
-    margin-bottom: 12px;    /* space between answer field and pills */
+    margin-bottom: 12px;   /* space between answer field and pills */
 }
 
 #build-words {
@@ -961,7 +985,7 @@ body {
 }
 
 #build-words .pill {
-    margin: 4px;            /* optional: small spacing between pills */
+    margin: 4px;           /* optional: small spacing between pills */
 }
 
 /* ============================================================
@@ -970,8 +994,8 @@ body {
 
 .convo-input {
     width: 100%;
-    min-height: 90px;           /* Larger default height */
-    max-height: 260px;          /* Comfortable upper limit */
+    min-height: 90px;          /* Larger default height */
+    max-height: 260px;         /* Comfortable upper limit */
     padding: 14px;
     border-radius: 14px;
     border: none;
@@ -980,8 +1004,8 @@ body {
     color: #fff;
     font-size: 1rem;
     line-height: 1.5;
-    resize: none;               /* Prevent ugly drag handle */
-    overflow-y: auto;           /* Scroll when long */
+    resize: none;              /* Prevent ugly drag handle */
+    overflow-y: auto;          /* Scroll when long */
 }
 .convo-input:focus {
     outline: none;
@@ -1045,21 +1069,21 @@ body {
 
 .pill {
     background: rgba(14, 165, 233, 0.95);        /* same blue */
-    color: #0f172a;                             /* same dark text */
-    padding: 10px 22px;                         /* same spacing */
-    border-radius: 999px;                       /* full pill */
+    color: #0f172a;                              /* same dark text */
+    padding: 10px 22px;                          /* same spacing */
+    border-radius: 999px;                        /* full pill */
     border: 1px solid rgba(148, 163, 184, 0.45); /* same border */
     cursor: pointer;
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.3px;
     transition: background 0.25s ease, transform 0.15s ease;
-    backdrop-filter: blur(6px);                 /* glass effect */
+    backdrop-filter: blur(6px);                  /* glass effect */
 }
 
 .pill:hover:not(:disabled) {
-    background: rgba(14, 165, 233, 1);          /* brighter blue */
-    transform: translateY(-1px);                /* subtle lift */
+    background: rgba(14, 165, 233, 1);           /* brighter blue */
+    transform: translateY(-1px);                 /* subtle lift */
 }
 
 .pill:disabled {
@@ -1071,81 +1095,74 @@ body {
 
 
 /* ============================================================
-   MOBILE — ≤600px
+   MOBILE — ≤600px (FIXED HORIZONTAL TAB SCROLLER)
    ============================================================ */
 @media (max-width: 600px) {
 
-    /* iPhone Safari scroll fix */
-html, body {
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
-    height: auto !important;
-}
-
-/* Remove sticky nav on mobile */
-.nav-bar {
-    position: relative !important;
-    top: auto !important;
-    z-index: 10 !important;
-}
-
-/* Prevent nav-bar width overflow */
-.nav-bar {
-    max-width: 100% !important;
-    width: 100% !important;
-}
-
-/* Stack dashboard panels */
-.dashboard-row {
-    flex-direction: column;
-    max-width: 100%;
-    gap: 16px;
-}
-
-   /* FIX — Listen tab must expand fully */
-    .listen-category-content {
-        max-height: none !important;
-    }
-
-    /* Prevent dashboard overflow */
-    .dashboard,
-    .dashboard-row {
-        max-width: 100% !important;
+    /* Force document and navigation wrapper to allow horizontal overflow scrolling */
+    html, body {
+        overflow-x: hidden !important;
         width: 100% !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
+        max-width: 100vw !important;
     }
 
-    /* Allow dashboard boxes to shrink */
-    .dash-left,
-    .dash-right {
-        min-width: 0 !important;
-        max-width: 100% !important;
+    .nav-bar {
+        position: relative !important;
         width: 100% !important;
-        padding: 14px;
+        max-width: 100% !important;
+        overflow: visible !important;
     }
 
-    /* Progress tiles: 4 → 2 columns */
-    .progress-section {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
-        width: 100%;
-        max-width: 100%;
+    /* 📱 BULLETPROOF HORIZONTAL SCROLL CONTAINER */
+    .level-navigation, 
+    .tab-container,
+    .nav-bar .dashboard-row,
+    [class*="nav-navigation"],
+    [class*="tab-nav"] {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        
+        /* Forces standard touch-momentum scrolling */
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        gap: 8px !important;
+        padding: 8px 16px !important;
+        margin: 0 !important;
+        
+        /* Ensures the scroll container stretches past screen boundaries to trigger touch handles */
+        min-width: min-content !important; 
+        
+        scrollbar-width: none !important;
     }
 
-    .progress-tile {
-        padding: 12px;
+    /* Hide scrollbars cleanly */
+    .level-navigation::-webkit-scrollbar,
+    .tab-container::-webkit-scrollbar,
+    [class*="nav-"]::-webkit-scrollbar,
+    [class*="tab-"]::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
     }
 
-    /* Flashcards flexible */
-    .flip-card {
-        height: auto;
-        min-height: 120px;
-    }
-
-    /* Listen tab spacing */
-    .listen-category-header {
-        padding: 8px 10px;
+    /* Prevent individual tabs from being crushed or clipped */
+    .tab-btn,
+    .level-navigation button,
+    .tab-container button {
+        flex: 0 0 auto !important;     /* Locks button size so they never shrink */
+        min-width: max-content !important; /* Forces full text visibility without truncation */
+        white-space: nowrap !important;
+        display: inline-block !important;
+        padding: 8px 16px !important;
+        font-size: 13px !important;
     }
 }
 
@@ -1153,7 +1170,6 @@ html, body {
    ULTRA‑SMALL PHONES — ≤360px
    ============================================================ */
 @media (max-width: 360px) {
-
     .dashboard-row {
         flex-direction: column;
         gap: 14px;
@@ -1188,22 +1204,23 @@ html, body {
     }
 
     .tab-btn {
-        padding: 8px 12px;
-        font-size: 13px;
+        padding: 8px 12px !important;
+        font-size: 13px !important;
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
     }
 
-   .glass-panel {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    width: 100% !important;
+    .glass-panel {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+    }
 }
 
-}
 /* ============================================================
    FOLDABLE PHONES — FOLDED (≤500px)
    ============================================================ */
 @media (max-width: 500px) {
-
     .dashboard-row {
         flex-direction: column;
         gap: 16px;
@@ -1230,15 +1247,24 @@ html, body {
     }
 
     .tab-btn {
-        padding: 10px 14px;
-        font-size: 14px;
+        padding: 10px 14px !important;
+        font-size: 14px !important;
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
     }
 }
 
 /* ============================================================
-   TABLETS — 600–900px
+   TABLETS — 600–900px (Part 2 Refined)
    ============================================================ */
 @media (min-width: 600px) and (max-width: 900px) {
+    /* Keep horizontal swipe clean if screen gets crowded in tablet portrait mode */
+    .tab-container, .level-navigation {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
 
     .dashboard-row {
         flex-direction: row;
@@ -1265,8 +1291,10 @@ html, body {
     }
 
     .tab-btn {
-        padding: 12px 18px;
-        font-size: 15px;
+        padding: 10px 16px !important; /* Gently fits buttons to prevent cutoffs */
+        font-size: 14px !important;
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
     }
 }
 
@@ -1274,7 +1302,6 @@ html, body {
    FOLDABLE PHONES — UNFOLDED (700–900px)
    ============================================================ */
 @media (min-width: 700px) and (max-width: 900px) {
-
     .dashboard-row {
         flex-direction: row;
         gap: 24px;
@@ -1300,8 +1327,10 @@ html, body {
     }
 
     .tab-btn {
-        padding: 14px 20px;
-        font-size: 16px;
+        padding: 14px 20px !important;
+        font-size: 16px !important;
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
     }
 }
 
@@ -1317,7 +1346,6 @@ html, body {
     max-width: 100%;
 }
 
-/* Keeps the text on the left, action items tightly grouped on the right */
 .review-card {
     display: flex;
     justify-content: space-between;
@@ -1325,7 +1353,6 @@ html, body {
     gap: 20px; 
 }
 
-/* Erases old default margins and bullet points from the badge container listing */
 #badge-list {
     padding: 0;
     margin: 12px 0 0 0;
@@ -1333,6 +1360,46 @@ html, body {
     flex-direction: column;
     gap: 10px;
 }
+
+.utility-row {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    max-width: 700px;
+    margin: 20px auto;
+}
+
+.dictionary-search-box,
+.free-practice-box {
+    flex: 1;
+    min-width: 280px;
+    max-width: 340px;
+    padding: 16px;
+    margin: 0 !important;
+    box-shadow: 0 0 10px rgba(0,255,255,0.05);
+}
+
+.dictionary-search-box .input-field,
+.free-practice-box .input-field {
+    width: 100%;
+    max-width: 100% !important;
+}
+
+@media (max-width: 700px) {
+    .utility-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+    
+    .dictionary-search-box,
+    .free-practice-box {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
 
 /* ============================================================
    RESPONSIVE UTILITY ROW (SIDE-BY-SIDE ON DESKTOP)
