@@ -2,56 +2,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dutch CEFR Trainer</title>
+    <title>Macca's Dutch CEFR Trainer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
- 
+
 <body>
 
 <!-- HEADER + HERO -->
 <div class="glass-header">
-    <h1>Lynda's Dutch Trainer</h1>
-    <img src="Icons/dashboard-hero.png" 
-         alt="Dashboard Hero" 
+    <h1>Macca's Dutch Trainer</h1>
+    -hero.png"
+         alt="Dashboard Hero"
          class="dashboard-hero-img">
 </div>
 
 <!-- NAVIGATION -->
 <nav class="glass-panel nav-bar">
     <button class="tab-btn active" data-tab="dashboard">
-        <img src="Icons/dashboard.png" class="tab-icon"> Dashboard
+        images/dashboard.png"> Dashboard
     </button>
+
     <button class="tab-btn" data-tab="listen">
-        <img src="Icons/listen.png" class="tab-icon"> Listen
+        images/listen.png class="tab-icon"> Listen
     </button>
+
     <button class="tab-btn" data-tab="flash">
-        <img src="Icons/flashcards.png" class="tab-icon"> Flashcards
+        /flashcards.png" class="tab-icon"> Flashcards
     </button>
+
     <button class="tab-btn" data-tab="quiz">
-        <img src="Icons/badge-quiz.png" class="tab-icon"> Quiz
+        <img src="images/.png Quiz
     </button>
+
     <button class="tab-btn" data-tab="build">
-        <img src="Icons/badge-build.png" class="tab-icon"> Build
+        .png" class="tab-icon"> Build
     </button>
+
     <button class="tab-btn" data-tab="sentence">
-        <img src="Icons/icon-sentence.png" class="tab-icon"> Sentence
+        <img src="n-sentence.png Sentence
     </button>
+
     <button class="tab-btn" data-tab="conversation">
-        <img src="Icons/badge-conversation.png" class="tab-icon"> Conversation
+        " class="tab-icon"> Conversation
     </button>
+
     <button class="tab-btn" data-tab="grammar">
-        <img src="Icons/grammar.png" class="tab-icon"> Grammar
+        <img srcrammar.png Grammar
     </button>
-    <!-- FIXED: Matches class and data attributes of other buttons -->
+
+    <button class="tab-btn" data-tab="mining">
+        images/mining.png-icon"> Mijnbouwterminologie
+    </button>
+
     <button class="tab-btn" data-tab="review">
-        <img src="Icons/icon-review.png" class="tab-icon"> Review
+        /icon-review.png" class="tab-icon"> Review
     </button>
 </nav>
 
 <!-- DASHBOARD TAB CONTENT -->
 <div id="dashboard">
+
     <div class="dashboard-row">
+
         <div class="dash-left glass-panel">
             <label class="section-title">Audio Speed</label>
             <input type="range" id="rate" min="0.6" max="1.4" step="0.1" value="1">
@@ -59,66 +72,152 @@
 
         <div class="dash-right glass-panel">
             <label class="section-title">Skill Level</label>
+
             <div class="level-buttons">
                 <button class="pill" data-level="A1">A1</button>
                 <button class="pill" data-level="A2">A2</button>
                 <button class="pill" data-level="B1">B1</button>
                 <button class="pill" data-level="B2">B2</button>
             </div>
+
         </div>
+
     </div>
 
     <div class="student-name-box glass-panel">
-        <label class="section-title">Your name for certificates</label>
-        <input id="student-name" class="input-field" type="text" placeholder="Enter your name">
-        <button id="save-name-btn" class="pill">Save Name</button>
-        <div id="name-status" class="name-status"></div>
-    </div>
 
-  <!-- RESPONSIVE ROW FOR UTILITIES -->
-<div class="utility-row">
-
-    <!-- GLOBAL DICTIONARY SEARCH BOX -->
-    <div class="student-name-box glass-panel dictionary-search-box">
-        <label class="section-title" style="color: #a5f3fc; text-shadow: 0 0 6px rgba(14,165,233,0.45);">
-            🔍 Quick Dictionary Search
+        <label class="section-title">
+            Je naam voor certificaten
         </label>
-        <p style="font-size: 12px; margin: -5px 0 5px 0; color: rgba(255,255,255,0.6);">
-            Type an English word to find its Dutch translation
-        </p>
-        <input id="dict-search-input" class="input-field" type="text" placeholder="e.g., Hello, Dog, Apple...">
-        <div id="dict-search-result" style="margin-top: 5px; min-height: 24px; font-size: 14px; text-align: center;"></div>
+
+        <input
+            id="student-name"
+            class="input-field"
+            type="text"
+            placeholder="Voer je naam in"
+        >
+
+        <button
+            id="save-name-btn"
+            class="pill"
+        >
+            Naam Opslaan
+        </button>
+
+        <div
+            id="name-status"
+            class="name-status"
+        ></div>
+
     </div>
 
-    <!-- FREE PRACTICE SANDBOX -->
-    <div class="student-name-box glass-panel free-practice-box">
-        <label class="section-title" style="color: #a5f3fc; text-shadow: 0 0 6px rgba(14,165,233,0.45);">
-            🎯 Free Practice Sandbox
-        </label>
-        <p style="font-size: 12px; margin: -5px 0 10px 0; color: rgba(255,255,255,0.6);">
-            No scoring, no rules. Translate the word below from any level!
-        </p>
-        <div id="practice-prompt-row" style="font-size: 16px; margin-bottom: 12px; font-weight: 500;">
-            Translate: <span id="practice-english-word" style="color: #0ea5e9; font-weight: bold;">Loading...</span>
-        </div>
-        <input id="practice-user-input" class="input-field" type="text" placeholder="Type the Dutch translation...">
-        <div id="practice-feedback" style="margin-top: 10px; min-height: 24px; font-size: 14px; text-align: center;"></div>
-        <div style="display: flex; gap: 10px; justify-content: center; margin-top: 12px;">
-            <button id="practice-check-btn" class="pill" style="max-width: 100px;">Check</button>
-            <button id="practice-next-btn" class="pill" style="max-width: 100px; background: rgba(255,255,255,0.1); color: #fff;">Skip</button>
-        </div>
-    </div>
 
-</div>
+    <!-- RESPONSIVE ROW FOR UTILITIES -->
+    <div class="utility-row">
+
+        <!-- GLOBAL DICTIONARY SEARCH BOX -->
+        <div class="student-name-box glass-panel dictionary-search-box">
+
+            <label
+                class="section-title"
+                style="color:#a5f3fc;text-shadow:0 0 6px rgba(14,165,233,0.45);"
+            >
+                🔍 Snel Woordenboek
+            </label>
+
+            <p
+                style="font-size:12px;margin:-5px 0 5px 0;color:rgba(255,255,255,0.6);"
+            >
+                Typ een Engels woord om de Nederlandse vertaling te vinden
+            </p>
+
+            <input
+                id="dict-search-input"
+                class="input-field"
+                type="text"
+                placeholder="bijv. Hello, Dog, Apple..."
+            >
+
+            <div
+                id="dict-search-result"
+                style="margin-top:5px;min-height:24px;font-size:14px;text-align:center;"
+            ></div>
+
+        </div>
+
+        <!-- FREE PRACTICE SANDBOX -->
+        <div class="student-name-box glass-panel free-practice-box">
+
+            <label
+                class="section-title"
+                style="color:#a5f3fc;text-shadow:0 0 6px rgba(14,165,233,0.45);"
+            >
+                🎯 Vrije Oefenruimte
+            </label>
+
+            <p
+                style="font-size:12px;margin:-5px 0 10px 0;color:rgba(255,255,255,0.6);"
+            >
+                Geen punten, geen regels. Vertaal het woord hieronder van elk niveau!
+            </p>
+
+            <div
+                id="practice-prompt-row"
+                style="font-size:16px;margin-bottom:12px;font-weight:500;"
+            >
+                Vertaal:
+                <span
+                    id="practice-english-word"
+                    style="color:#0ea5e9;font-weight:bold;"
+                >
+                    Laden...
+                </span>
+            </div>
+
+            <input
+                id="practice-user-input"
+                class="input-field"
+                type="text"
+                placeholder="Typ de Nederlandse vertaling..."
+            >
+
+            <div
+                id="practice-feedback"
+                style="margin-top:10px;min-height:24px;font-size:14px;text-align:center;"
+            ></div>
+
+            <div
+                style="display:flex;gap:10px;justify-content:center;margin-top:12px;"
+            >
+                <button
+                    id="practice-check-btn"
+                    class="pill"
+                    style="max-width:100px;"
+                >
+                    Controleer
+                </button>
+
+                <button
+                    id="practice-next-btn"
+                    class="pill"
+                    style="max-width:100px;background:rgba(255,255,255,0.1);color:#fff;"
+                >
+                    Overslaan
+                </button>
+            </div>
+
+        </div>
+
+    </div>
 
 
     <!-- PROGRESS METERS -->
     <div class="progress-section">
-        <!-- QUIZ -->
+
         <div id="quiz-tile" class="progress-tile glass-panel">
             <div class="progress-icon-row">
-                <img src="Icons/badge-quiz.png" class="progress-img">
-                <label class="section-title">Quiz Progress</label>
+                -quiz.png" class="progress-img">
+                <label class="section-title">Quiz Voortgang</label>
                 <span class="progress-number" id="quiz-number">0%</span>
             </div>
             <div class="progress-bar">
@@ -126,11 +225,10 @@
             </div>
         </div>
 
-        <!-- BUILD -->
         <div id="build-tile" class="progress-tile glass-panel">
             <div class="progress-icon-row">
-                <img src="Icons/badge-build.png" class="progress-img">
-                <label class="section-title">Build Progress</label>
+                images/badge-build.pngprogress-img">
+                <label class="section-title">Bouw Voortgang</label>
                 <span class="progress-number" id="build-number">0%</span>
             </div>
             <div class="progress-bar">
@@ -138,11 +236,10 @@
             </div>
         </div>
 
-        <!-- SENTENCE -->
         <div id="sentence-tile" class="progress-tile glass-panel">
             <div class="progress-icon-row">
-                <img src="Icons/icon-sentence.png" class="progress-img">
-                <label class="section-title">Sentence Progress</label>
+                images/icon-sentence.png
+                <label class="section-title">Zinnen Voortgang</label>
                 <span class="progress-number" id="sentence-number">0%</span>
             </div>
             <div class="progress-bar">
@@ -150,11 +247,10 @@
             </div>
         </div>
 
-        <!-- XP -->
         <div id="xp-tile" class="progress-tile glass-panel">
             <div class="progress-icon-row">
-                <img src="Icons/icon-xp.png" class="progress-img">
-                <label class="section-title">XP Progress</label>
+                images/icon-xp.pngprogress-img">
+                <label class="section-title">XP Voortgang</label>
                 <span class="progress-number" id="xp-number">0%</span>
             </div>
             <div class="progress-bar">
@@ -162,11 +258,10 @@
             </div>
         </div>
 
-        <!-- STREAK -->
         <div id="streak-tile" class="progress-tile glass-panel">
             <div class="progress-icon-row">
-                <img src="Icons/icon-streak.png" class="progress-img">
-                <label class="section-title">Streak</label>
+                reak.png" class="progress-img">
+                <label class="section-title">Reeks</label>
                 <span class="progress-number" id="streak-number">0%</span>
             </div>
             <div class="progress-bar">
@@ -174,11 +269,10 @@
             </div>
         </div>
 
-        <!-- SCORE -->
         <div id="score-tile" class="progress-tile glass-panel">
             <div class="progress-icon-row">
-                <img src="Icons/icon-level.png" class="progress-img">
-                <label class="section-title">Score Rating</label>
+                images/icon-level.png
+                <label class="section-title">Score Beoordeling</label>
                 <span class="progress-number" id="score-number">0%</span>
             </div>
             <div class="progress-bar">
@@ -186,32 +280,39 @@
             </div>
         </div>
 
-        <!-- REVIEW -->
         <div id="review-tile" class="progress-tile glass-panel">
             <div class="progress-icon-row">
-                <img src="Icons/icon-review.png" class="progress-img">
-                <label class="section-title">Due for Review</label>
+                images/icon-review.png
+                <label class="section-title">Te Herhalen</label>
                 <span class="progress-number" id="review-number">0%</span>
             </div>
             <div class="progress-bar">
                 <div class="progress-fill" id="review-progress"></div>
             </div>
         </div>
-        
-        <!-- RESET -->
+
         <div id="reset-tile" class="progress-tile glass-panel reset-tile">
             <div class="progress-icon-row">
-                <img src="Icons/icon-reset.png" class="progress-img">
-                <label class="section-title">Reset All Levels</label>
+                images/icon-reset.png="progress-img">
+                <label class="section-title">Alle Niveaus Wissen</label>
             </div>
-            <button id="resetAllLevelsBtn" class="dash-reset-btn danger">Reset Everything</button>
+
+            <button
+                id="resetAllLevelsBtn"
+                class="dash-reset-btn danger"
+            >
+                Alles Wissen
+            </button>
+
         </div>
+
     </div>
 
     <div class="badge-section glass-panel">
-        <h3>Your Badges</h3>
+        <h3>Jouw Badges</h3>
         <ul id="badge-list"></ul>
     </div>
+
 </div>
 
 <!-- OTHER TABS -->
@@ -222,11 +323,15 @@
 <div id="sentence" class="hidden"><div id="sentence-content"></div></div>
 <div id="conversation" class="hidden"><div id="conversation-content"></div></div>
 <div id="grammar" class="hidden"><div id="grammar-content"></div></div>
+<div id="mining" class="hidden"><div id="mining-content"></div></div>
 
-<!-- FIXED: Added missing Review container view -->
 <div id="review" class="hidden">
-    <div id="review-content" class="glass-panel" style="padding: 20px; margin-top: 20px;">
-        <h2>Mistaken Areas Review</h2>
+    <div
+        id="review-content"
+        class="glass-panel"
+        style="padding:20px;margin-top:20px;"
+    >
+        <h2>Herhaling van Fouten</h2>
         <div id="review-words-list"></div>
     </div>
 </div>
