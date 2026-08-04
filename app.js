@@ -5812,7 +5812,7 @@ A1: [
             { nl: "er is kip", en: "There is chicken" }
         ]
     }
-]
+
 {
     prompt_nl: "Wil je naar het hotel gaan?",
     prompt_en: "Do you want to go to the hotel?",
