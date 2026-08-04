@@ -242,6 +242,7 @@ const CEFR_SENTENCES = {
         // Simple Greetings & Formal Introductions
         { english: "Hello, how are you?", dutch: "hallo hoe gaat het" },
         { english: "Good morning, sir.", dutch: "goedemorgen meneer" },
+		{ english: "Hello Evelyn, I love you.", dutch: "Hallo Evelyn, ik hou van je."},
         { english: "Good afternoon, ma'am.", dutch: "goedemiddag mevrouw" },
         { english: "Good night, family.", dutch: "goedenacht familie" },
         { english: "Goodbye, my friend.", dutch: "tot ziens mijn vriend" },
@@ -3093,6 +3094,15 @@ const CEFR_SENTENCE_CHOICES = {
             { nl: "ik ben vandaag erg blij", en: "I’m really happy today." }
         ]
     },
+		{
+    english: "Hello Evelyn, how are you?",
+    correct: { nl: "Hallo Evelyn, hoe gaat het met je?", en: "Hello Evelyn, how are you?" },
+    options: [
+        { nl: "Hallo Evelyn, hoe gaat het met je?", en: "Hello Evelyn, how are you?" },
+        { nl: "Hallo Evelyn, fijn je te zien.", en: "Hello Evelyn, nice to see you." },
+        { nl: "Hallo Evelyn, wat doe je vandaag?", en: "Hello Evelyn, what are you doing today?" }
+    ]
+},
     {
         english: "The room’s nice and clean.",
         correct: { nl: "de kamer is schoon", en: "The room’s nice and clean." },
