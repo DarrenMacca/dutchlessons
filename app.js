@@ -5679,12 +5679,11 @@ function audioContextPlayback(type) {
 
     } catch (e) {
 
-        console.warn(
-            "WebAudio player stalled:",
-            e
-        );
+        console.warn("WebAudio player stalled:",e);
     }
 }
+
+const CEFR_CONVERSATION_PROMPTS = {
 A1: [
     {
         prompt_nl: "Wat wil je drinken?",
