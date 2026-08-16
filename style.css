@@ -58,7 +58,7 @@ body {
 ------------------------------------------------------------ */
 .dashboard-hero-img {
     width: 100%;
-    max-width: 405px; /* reduced by 40% */
+    max-width: 305px; /* reduced by 40% */
     height: auto;
     display: block;
     margin: 20px auto 0 auto;
