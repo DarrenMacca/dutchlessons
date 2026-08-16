@@ -3176,10 +3176,10 @@ const CEFR_SENTENCE_CHOICES = {
         ]
     },
     {
-        english: "I’m learning Spanish.",
-        correct: { nl: "ik leer nederlands", en: "I’m learning Spanish." },
+        english: "I’m learning Dutch.",
+        correct: { nl: "ik leer nederlands", en: "I’m learning Dutch." },
         options: [
-            { nl: "ik leer nederlands", en: "I’m learning Spanish." },
+            { nl: "ik leer nederlands", en: "I’m learning Dutch." },
             { nl: "ik leer engels", en: "I’m learning English." },
             { nl: "ik leer frans", en: "I’m learning French." }
         ]
@@ -3877,13 +3877,13 @@ B1: [
     ]
 },
 {
-    english: "I’m trying to improve my Spanish every day.",
-    correct: { nl: "ik probeer elke dag mijn nederlands te verbeteren", en: "I’m trying to improve my Spanish every day." },
+    english: "I’m trying to improve my Dutch every day.",
+    correct: { nl: "ik probeer elke dag mijn nederlands te verbeteren", en: "I’m trying to improve my Dutch every day." },
     options: [
-        { nl: "ik probeer elke dag mijn nederlands te verbeteren", en: "I’m trying to improve my Spanish every day." },
-        { nl: "ik probeer elke dag mijn nederlands te vergeten", en: "I’m trying to forget my Spanish every day." },
-        { nl: "ik probeer elke dag mijn nederlands te veranderen", en: "I’m trying to change my Spanish every day." },
-        { nl: "ik probeer elke dag mijn nederlands te onderwijzen", en: "I’m trying to teach my Spanish every day." }
+        { nl: "ik probeer elke dag mijn nederlands te verbeteren", en: "I’m trying to improve my Dutch every day." },
+        { nl: "ik probeer elke dag mijn nederlands te vergeten", en: "I’m trying to forget my Dutch every day." },
+        { nl: "ik probeer elke dag mijn nederlands te veranderen", en: "I’m trying to change my Dutch every day." },
+        { nl: "ik probeer elke dag mijn nederlands te onderwijzen", en: "I’m trying to teach my Dutch every day." }
     ]
 },
 {
@@ -6124,7 +6124,7 @@ A1: [
     prompt_en: "What do you need to do today?",
     expected_responses: [
         { nl: "ik moet meer werken", en: "I need to work more" },
-        { nl: "ik moet nederlands studeren", en: "I need to study Spanish" },
+        { nl: "ik moet nederlands studeren", en: "I need to study Dutch" },
         { nl: "ik wil thuis uitrusten", en: "I want to rest at home" }
     ]
 },
