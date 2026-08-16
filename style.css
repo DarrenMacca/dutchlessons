@@ -58,7 +58,7 @@ body {
 ------------------------------------------------------------ */
 .dashboard-hero-img {
     width: 100%;
-    max-width: 337px;
+    max-width: 405px; /* reduced by 40% */
     height: auto;
     display: block;
     margin: 20px auto 0 auto;
@@ -75,6 +75,7 @@ body {
         filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.3));
     }
 }
+
 
 /* ------------------------------------------------------------
    HERO IMAGE
